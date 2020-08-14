@@ -1,0 +1,32 @@
+From 3f56a52a30f4a76512995d83dfd6a413bda57518 Mon Sep 17 00:00:00 2001
+From: "Zicsi-Liess, Daniel" <Daniel.Zicsi-Liess@kuka.com>
+Date: Mon, 21 Sep 2020 10:16:44 +0200
+Subject: [PATCH] yocto-compatible
+
+---
+ cmake/protobuf-config.cmake.in | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/cmake/protobuf-config.cmake.in b/cmake/protobuf-config.cmake.in
+index fac5efe44..82d4322cb 100644
+--- a/cmake/protobuf-config.cmake.in
++++ b/cmake/protobuf-config.cmake.in
+@@ -7,6 +7,15 @@ include("${CMAKE_CURRENT_LIST_DIR}/protobuf-options.cmake")
+ # Imported targets
+ include("${CMAKE_CURRENT_LIST_DIR}/protobuf-targets.cmake")
+ 
++if(NOT TARGET protobuf::protoc)
++  add_executable(protobuf::protoc IMPORTED)
++  find_program(protobuf_PROTOC_EXE protoc)
++  if (NOT protobuf_PROTOC_EXE)
++    message(FATAL "Build requires 'protoc' but binary not found and not building protoc.")
++  endif ()
++  set_property(TARGET protobuf::protoc PROPERTY IMPORTED_LOCATION ${protobuf_PROTOC_EXE})
++endif()
++
+ function(protobuf_generate)
+   include(CMakeParseArguments)
+ 
+-- 
+2.20.1
+
