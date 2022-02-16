@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 ### but that does not exist
 SRC_URI = "git://github.com/c-ares/c-ares.git;branch=master"
 
-SRCREV = "${AUTOREV}"
+SRCREV = "320b99bb9c63b07421c8dc10561c5796003ed478"
 
 S = "${WORKDIR}/git"
 
