@@ -6,7 +6,7 @@ DEPENDS = "cppzmq \
           "
 
 SRC_URI = "git://github.com/dliess/capnzero.git;protocol=ssh;branch=develop"
-SRCREV = "ca4634be30100fe4d9b20d62105cf8df0cdfab09"
+SRCREV = "baf9c893d0c1090808773265e8e351fd7932aa08"
 
 S = "${WORKDIR}/git"
 
